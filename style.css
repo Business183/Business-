@@ -1,0 +1,204 @@
+/* Base Reset & Variables */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-gray: #1a1a1a;
+    --color-light-gray: #f5f5f5;
+    --transition-smooth: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+body {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    overflow-x: hidden;
+}
+
+a{
+    color: rgba(42, 8, 93, 0.695);
+}
+
+a:hover {
+    color: rgba(88, 9, 104, 0.648);
+}
+
+/* --- Section 1: Info (White Background) --- */
+.info-section {
+    background-color: var(--color-white);
+    color: var(--color-black);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 10%;
+    position: relative;
+}
+
+.info-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+header {
+    position: absolute;
+    top: 3rem;
+    left: 10%;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.logo b {
+    color: #888;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    letter-spacing: -2px;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 2.5rem;
+}
+
+.cta-btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border: 2px solid var(--color-black);
+    background-color: var(--color-black);
+    color: var(--color-white);
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: var(--transition-smooth);
+}
+
+.cta-btn:hover {
+    background-color: transparent;
+    color: var(--color-black);
+}
+
+/* --- Section 2: Display Grid (Black Background) --- */
+.gallery-section {
+    background-color: var(--color-black);
+    min-height: 100vh;
+    padding: 6rem 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.gallery-header {
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+.gallery-header h2 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+
+.gallery-header p {
+    color: #666;
+    font-size: 1rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Interactive Card Component */
+.card {
+    position: relative;
+    height: 450px;
+    overflow: hidden;
+    background-color: var(--color-gray);
+    cursor: pointer;
+    border: 1px solid #222;
+    transition: var(--transition-smooth);
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(110%);
+    transition: var(--transition-smooth);
+}
+
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    padding: 2rem 1.5rem;
+    transform: translateY(10px);
+    opacity: 0.8;
+    transition: var(--transition-smooth);
+}
+
+.card-overlay h3 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+/* Hover Interactivity */
+.card:hover {
+    border-color: var(--color-white);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.card:hover img {
+    transform: scale(1.05);
+    filter: grayscale(0%) contrast(100%); /* Reveals color interactively on hover */
+}
+
+.card:hover .card-overlay {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Responsive Scaling */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+    .info-section, .gallery-section {
+        padding: 4rem 5%;
+    }
+    header {
+        left: 5%;
+    }
+}
